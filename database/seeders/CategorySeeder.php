@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('products')->insert([
+        DB::table('categories')->insert([
             ['name' => 'Motorization'],
             ['name' => 'Home and Garden'],
             ['name' => 'Electronics'],
