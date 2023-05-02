@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\ProductCondition;
+use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +19,11 @@ class Product extends Model
         'quantity',
         'product_condition',
         'type'
+    ];
+
+    protected $casts = [
+        'type' => ProductType::class,
+        'product_condition' => ProductCondition::class
     ];
 
     public function categories()
