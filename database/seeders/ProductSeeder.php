@@ -13,7 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('roles')->insert([
+        DB::table('products')->insert([
             [
                 'name' => 'BMW M3 Competition',
                 'description' => 'BMW M3 Competition 300MPH 2018 NEW FOR SALE!!!',
