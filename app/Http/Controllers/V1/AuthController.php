@@ -20,10 +20,10 @@ class AuthController extends Controller
 
         $user = new User();
 
-        $user->first_name =  $request->input('first_name');
-        $user->last_name =  $request->input('last_name');
-        $user->email =  $request->input('email');
-        $user->password =  $request->input('password');
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
 
         $user->save();
 
@@ -48,8 +48,25 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
+        $roles = $user->roles;
+        $token = null;
 
-        $token = $user->createToken('jwt')->plainTextToken;
+        foreach ($roles as $role) {
+            // TODO: improve roles by specific models in future
+            if ($role->name === 'admin') {
+                $token = $user->createToken('jwt',
+                    ['create', 'read', 'update', 'delete']);
+                break;
+            }
+
+            if ($role->name === 'user') {
+                $token = $user->createToken('jwt',
+                    ['create', 'read', 'update', 'delete']);
+            }
+        }
+
+        $token = $token->plainTextToken;
+
         $cookie = cookie('token-cookie', $token, 60 * 24); // valid for 1 day
 
         return response([
