@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->unsignedDecimal('price', 10);
             $table->integer('quantity');
-            $table->enum('product_condition', ['FOR_SALE', 'TO_BUY'])->default('FOR_SALE');
-            $table->enum('type', ['NEW', 'USED'])->default('NEW');
+            $table->string('product_condition')->default('FOR_SALE');
+            $table->string('type')->default('NEW');
 
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('user_id');
