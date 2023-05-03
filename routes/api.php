@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\V1\AuthController;
 use App\Http\Controllers\V1\CategoryController;
+use App\Http\Controllers\V1\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [AuthController::class, 'user']);
     Route::get('logout', [AuthController::class, 'logout']);
 
-//    Route::get('categories', [CategoryController::class, 'index']);
-//    Route::get('categories/{id}', [CategoryController::class, 'show']);
     Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('products', ProductController::class);
 });
 
