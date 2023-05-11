@@ -21,6 +21,20 @@ class UpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
+
+        if ($this->isMethod('PUT')) {
+            return [
+                'name' => 'required',
+                'description' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg|size:1024',
+                'price' => 'required|decimal:1,6',
+                'quantity' => 'required',
+                'product_condition' => 'required|in:NEW,USED',
+                'type' => 'required|in:FOR_SALE,TO_BUY',
+                'category_id' => 'required|exists:App\Models\Category,id',
+            ];
+        }
+
         return [
             'name' => 'sometimes|required',
             'description' => 'sometimes|required',

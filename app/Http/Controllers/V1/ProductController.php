@@ -8,6 +8,7 @@ use App\Http\Requests\V1\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
@@ -29,5 +30,21 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
+
+        return response(["product" => $product], Response::HTTP_OK);
+    }
+
+    public function destroy($id)
+    {
+        if ($product = Product::find($id)) {
+            $product->delete();
+
+            return response([
+                'message' => 'Product: ' . $product->name . ' deleted'
+            ], Response::HTTP_OK);
+        }
+
+        return response(['message' => 'Product: ' . $id . ' not found!'],
+            Response::HTTP_NOT_FOUND);
     }
 }
