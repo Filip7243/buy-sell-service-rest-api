@@ -8,7 +8,6 @@ use App\Http\Requests\V1\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryCollection;
 use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
-use App\Services\V1\CategoryQuery;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
