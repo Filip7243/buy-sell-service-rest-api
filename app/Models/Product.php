@@ -18,7 +18,9 @@ class Product extends Model
         'price',
         'quantity',
         'product_condition',
-        'type'
+        'type',
+        'category_id',
+        'user_id'
     ];
 
     protected $casts = [
@@ -28,11 +30,11 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'id', 'category_id');
     }
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'id', 'user_id');
     }
 }
