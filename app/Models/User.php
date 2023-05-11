@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     public function product()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
 }
