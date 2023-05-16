@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
             return response([
                 'message' => 'Category: ' . $foundCategory->name . ' deleted'
-            ], Response::HTTP_OK);
+            ], Response::HTTP_NO_CONTENT);
         }
 
         return response(['message' => 'Category: ' . $id . ' not found!'],
