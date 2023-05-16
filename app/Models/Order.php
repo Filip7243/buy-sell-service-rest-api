@@ -23,13 +23,13 @@ class Order extends Model
         'order_status' => OrderStatus::class
     ];
 
-    public function products()
+    public function product()
     {
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
     public function users()
     {
-        return $this->hasMany(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
