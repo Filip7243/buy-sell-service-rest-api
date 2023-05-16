@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,9 +27,9 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->renderable(function (NotFoundHttpException $e, Request $request) {
-            if ($request->is('api/categories/*')) {
+            if ($request->is(['api/categories/*', 'api/orders/*'])) {
                 return response()->json([
-                    'message' => 'Category not found.'
+                    'message' => 'Resource not found.'
                 ], Response::HTTP_NOT_FOUND);
             }
         });
