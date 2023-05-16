@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedDecimal('price', 10);
             $table->string('order_status')->default('NOT_PAID');
 
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('product_id')->unique();
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('product_id')
