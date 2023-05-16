@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatus;
+use App\Enums\ProductCondition;
+use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,9 +19,13 @@ class Order extends Model
         'user_id'
     ];
 
+    protected $casts = [
+        'order_status' => OrderStatus::class
+    ];
+
     public function products()
     {
-        return $this->hasMany(Product::class, 'id', 'product_id');
+        return $this->hasOne(Product::class);
     }
 
     public function users()
