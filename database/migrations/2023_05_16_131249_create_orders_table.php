@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->unsignedDecimal('price', 10);
             $table->string('order_status')->default('NOT_PAID');
 
             $table->unsignedBigInteger('product_id');
