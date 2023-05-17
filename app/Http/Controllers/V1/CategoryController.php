@@ -17,7 +17,6 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        //TODO: handel transform
         $filter = new CategoryQuery();
         $queryItems = $filter->transform($request);
 
