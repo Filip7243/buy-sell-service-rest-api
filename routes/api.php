@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\V1\AuthController;
 use App\Http\Controllers\V1\CategoryController;
-use App\Http\Controllers\V1\OrderController as OrderControllerAlias;
+use App\Http\Controllers\V1\OrderController;
 use App\Http\Controllers\V1\ProductController;
+use App\Http\Controllers\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('products', ProductController::class);
-    Route::apiResource('orders', OrderControllerAlias::class);
+    Route::apiResource('orders', OrderController::class);
+    Route::apiResource('users', UserController::class);
 });
 
