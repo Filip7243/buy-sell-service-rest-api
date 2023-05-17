@@ -25,7 +25,7 @@ class ProductResource extends JsonResource
             'product_condition' => $this->product_condition,
             'type' => $this->type,
             'categories' => CategoryResource::collection($this->categories),
-            'user' => $this->users // TODO: make resource for user!
+            'user' => UserResource::collection($this->users) // TODO: make resource for user!
         ];
     }
 }
