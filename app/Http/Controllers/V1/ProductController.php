@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         $product->update($request->all());
 
-        return response(["product" => $product], Response::HTTP_OK);
+        return response(['message' => "Product has been updated!", 'Product' => new ProductResource($product)]);
     }
 
     public function destroy($id)
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
             return response([
                 'message' => 'Product: ' . $product->name . ' deleted'
-            ], Response::HTTP_OK);
+            ], Response::HTTP_NO_CONTENT);
         }
 
         return response(['message' => 'Product: ' . $id . ' not found!'],
