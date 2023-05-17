@@ -8,39 +8,63 @@ use Illuminate\Http\Request;
 class CategoryQuery
 {
 
-    protected array $params = [
+    protected array $safeParms = [
         'name' => ['eq']
     ];
 
-    protected array $columns = [
+    protected array $columnMap = [
         'name' => 'name'
     ];
 
-    protected array $operators = [
+    protected array $operatorMap = [
         'eq' => '='
     ];
 
 
+//    public function transform(Request $request)
+//    {
+//        //TODO: handle it ASAP!
+//        $query = [];
+//
+//        foreach ($this->safeParms as $parm => $operators) {
+//            $query = $request->query($parm);
+//
+//            if (!isset($query)) {
+//                continue;
+//            }
+//
+//            $column = $this->columnMap[$parm] ?? $parm;
+//
+//            foreach ($operators as $operator) {
+//                if (isset($query[$operator])) {
+//                    $query[] = [$column, $this->operatorMap[$operator], $query[$operator]];
+//                }
+//            }
+//        }
+//
+//        return $query;
+//    }
+
     public function transform(Request $request)
     {
-        $query = [];
+        $eloQuery = [];
 
-        foreach ($this->params as $param => $ops) {
-            $query = $request->query($param);
+        foreach ($this->safeParms as $parm => $operators) {
+            $query = $request->query($parm);
 
             if (!isset($query)) {
                 continue;
             }
 
-            $column = $this->columns[$param] ?? $param;
+            $column = $this->columnMap[$parm] ?? $parm;
 
-            foreach ($ops as $op) {
-                if (isset($query[$op])) {
-                    $query[] = [$column, $this->operators[$op], $query[$op]];
+            foreach ($operators as $operator) {
+                if (isset($query[$operator])) {
+                    $eloQuery[] = [$column, $this->operatorMap[$operator], $query[$operator]];
                 }
             }
         }
 
-        return $query;
+        return $eloQuery;
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\V1\UpdateCategoryRequest;
 use App\Http\Resources\V1\CategoryCollection;
 use App\Http\Resources\V1\CategoryResource;
 use App\Models\Category;
+use App\Services\V1\CategoryQuery;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,18 +17,15 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-
         //TODO: handel transform
-//        $filter = new CategoryQuery();
-//        $queryItems = $filter->transform($request);
-//
-//        if (count($queryItems) == 0) {
-//
-//        } else {
-//            return new CategoryCollection(Category::where($queryItems)->paginate());
-//        }
+        $filter = new CategoryQuery();
+        $queryItems = $filter->transform($request);
 
-        return new CategoryCollection(Category::paginate());
+        if (count($queryItems) == 0) {
+            return new CategoryCollection(Category::paginate());
+        } else {
+            return new CategoryCollection(Category::where($queryItems)->paginate());
+        }
     }
 
     public function show(Category $category)
