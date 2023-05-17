@@ -21,10 +21,20 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-        ];
+        $method = $this->method();
+
+        if ($method == 'PUT') {
+            return [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email|unique:users,email'.$this->user->id,
+            ];
+        } else {
+            return [
+                'first_name' => 'sometimes|required',
+                'last_name' => 'sometimes|required',
+                'email' => 'sometimes|required|email|unique:users,email'.$this->user->id,
+            ];
+        }
     }
 }
