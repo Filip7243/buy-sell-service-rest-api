@@ -55,13 +55,19 @@ class AuthController extends Controller
             // TODO: improve roles by specific models in future
             if ($role->name === 'admin') {
                 $token = $user->createToken('jwt',
-                    ['create', 'read', 'update', 'delete']);
+                    ['user:create', 'user:read', 'user:update', 'user:delete',
+                        'product:read', 'product:delete',
+                        'order:read', 'order:delete',
+                        'category:create', 'category:read', 'category:delete',
+                        'role:read', 'role:update', 'role:delete']);
                 break;
             }
 
             if ($role->name === 'user') {
                 $token = $user->createToken('jwt',
-                    ['create', 'read', 'update', 'delete']);
+                    ['user:read', 'user:update',
+                        'product:create', 'product:read', 'product:update', 'product:delete',
+                        'order:create', 'order:read', 'order:delete']);
             }
         }
 
