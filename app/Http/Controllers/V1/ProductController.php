@@ -8,13 +8,23 @@ use App\Http\Requests\V1\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
+use App\Services\V1\CategoryQuery;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return new ProductCollection(Product::paginate());
+        $filter = new CategoryQuery();
+        $queryItems = $filter->transform($request);
+
+        if (count($queryItems) == 0) {
+            return new ProductCollection(Product::paginate());
+        } else {
+            return new ProductCollection(Product::where($queryItems)->paginate());
+        }
+
     }
 
     public function show(Product $product)
