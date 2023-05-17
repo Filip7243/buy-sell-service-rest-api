@@ -59,7 +59,7 @@ class AuthController extends Controller
                         'product:read', 'product:delete',
                         'order:read', 'order:delete',
                         'category:create', 'category:read', 'category:delete',
-                        'role:read', 'role:update', 'role:delete']);
+                        'role:create', 'role:read', 'role:update', 'role:delete']);
                 break;
             }
 
