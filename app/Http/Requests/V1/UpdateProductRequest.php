@@ -11,7 +11,12 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        if ($user->tokenCan('product:update')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

@@ -11,7 +11,12 @@ class StoreOrderRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        if ($user->tokenCan('order:create')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

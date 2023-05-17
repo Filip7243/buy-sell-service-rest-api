@@ -11,7 +11,12 @@ class StoreCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        if ($user->tokenCan('category:create')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

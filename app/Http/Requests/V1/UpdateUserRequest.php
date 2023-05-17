@@ -11,7 +11,12 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+        if ($user->tokenCan('user:update')) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -27,13 +32,13 @@ class UpdateUserRequest extends FormRequest
             return [
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|email|unique:users,email'.$this->user->id,
+                'email' => 'required|email|unique:users,email'
             ];
         } else {
             return [
                 'first_name' => 'sometimes|required',
                 'last_name' => 'sometimes|required',
-                'email' => 'sometimes|required|email|unique:users,email'.$this->user->id,
+                'email' => 'sometimes|required|email|unique:users,email'
             ];
         }
     }
