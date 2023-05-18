@@ -16,15 +16,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $filter = new CategoryQuery();
-        $queryItems = $filter->transform($request);
-
-        if (count($queryItems) == 0) {
-            return new ProductCollection(Product::paginate());
-        } else {
-            return new ProductCollection(Product::where($queryItems)->paginate());
-        }
-
+        return new ProductCollection(Product::paginate());
     }
 
     public function show(Product $product)

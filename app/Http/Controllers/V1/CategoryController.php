@@ -17,14 +17,7 @@ class CategoryController extends Controller
 
     public function index(Request $request)
     {
-        $filter = new CategoryQuery();
-        $queryItems = $filter->transform($request);
-
-        if (count($queryItems) == 0) {
-            return new CategoryCollection(Category::paginate());
-        } else {
-            return new CategoryCollection(Category::where($queryItems)->paginate());
-        }
+        return new CategoryCollection(Category::paginate());
     }
 
     public function show(Category $category)
