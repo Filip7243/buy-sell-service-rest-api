@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
 use App\Enums\ProductCondition;
 use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $fillable = [
         'name',

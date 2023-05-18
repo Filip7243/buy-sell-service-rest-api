@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return new ProductCollection(Product::paginate());
+        return new ProductCollection(Product::filter()->paginate());
     }
 
     public function show(Product $product)
