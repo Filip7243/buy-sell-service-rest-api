@@ -20,12 +20,12 @@ return new class extends Migration {
             $table->string('product_condition')->default('FOR_SALE');
             $table->string('type')->default('NEW');
 
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('category_id')
                 ->references('id')->on('categories')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
