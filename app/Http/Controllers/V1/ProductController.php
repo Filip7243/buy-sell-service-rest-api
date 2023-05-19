@@ -8,8 +8,8 @@ use App\Http\Requests\V1\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
+use App\Services\ProductService;
 use App\Services\V1\CategoryQuery;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request)
     {
-        return new ProductResource(Product::create($request->all()));
+        return (new ProductService())->createProduct($request);
     }
 
     public function update(UpdateProductRequest $request, Product $product)
