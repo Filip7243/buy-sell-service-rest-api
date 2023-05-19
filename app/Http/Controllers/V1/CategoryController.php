@@ -35,17 +35,12 @@ class CategoryController extends Controller
         $category->update($request->all());
     }
 
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        if ($foundCategory = Category::find($id)) {
-            $foundCategory->delete();
+        $category->delete();
 
-            return response([
-                'message' => 'Category: ' . $foundCategory->name . ' deleted'
-            ], Response::HTTP_NO_CONTENT);
-        }
-
-        return response(['message' => 'Category: ' . $id . ' not found!'],
-            Response::HTTP_NOT_FOUND);
+        return response([
+            'message' => 'Category deleted'
+        ], Response::HTTP_NO_CONTENT);
     }
 }

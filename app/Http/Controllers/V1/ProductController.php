@@ -36,17 +36,10 @@ class ProductController extends Controller
         return response(['message' => "Product has been updated!", 'Product' => new ProductResource($product)]);
     }
 
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        if ($product = Product::find($id)) {
-            $product->delete();
+        $product->delete();
 
-            return response([
-                'message' => 'Product: ' . $product->name . ' deleted'
-            ], Response::HTTP_NO_CONTENT);
-        }
-
-        return response(['message' => 'Product: ' . $id . ' not found!'],
-            Response::HTTP_NOT_FOUND);
+        return response('', Response::HTTP_NO_CONTENT);
     }
 }

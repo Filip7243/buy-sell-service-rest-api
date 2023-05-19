@@ -29,18 +29,12 @@ class UserController extends Controller
         return response(['User has been updated successfully!' => new UserResource($user)]);
     }
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        if ($user = User::find($id)) {
-            $user->delete();
+        $user->delete();
 
-            return response([
-                'message' => 'User deleted'
-            ], Response::HTTP_NO_CONTENT);
-        }
-
-        return response(['message' => 'User with id: ' . $id . ' not found!'],
-            Response::HTTP_NOT_FOUND);
+        return response([
+            'message' => 'User deleted'
+        ], Response::HTTP_NO_CONTENT);
     }
-
 }

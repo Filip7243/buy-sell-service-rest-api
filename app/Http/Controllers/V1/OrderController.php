@@ -33,18 +33,13 @@ class OrderController extends Controller
         $order->update($request->all());
     }
 
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        if ($foundOrder = Order::find($id)) {
-            $foundOrder->delete();
+        $order->delete();
 
-            return response([
-                'message' => 'Order: ' . $foundOrder->name . ' deleted'
-            ], Response::HTTP_NO_CONTENT);
-        }
-
-        return response(['message' => 'Order: ' . $id . ' not found!'],
-            Response::HTTP_NOT_FOUND);
+        return response([
+            'message' => 'Order deleted'
+        ], Response::HTTP_NO_CONTENT);
     }
 
 }
