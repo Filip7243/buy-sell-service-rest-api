@@ -20,7 +20,7 @@ class Authenticate extends Middleware
     {
         if ($jwt = $request->cookie('token-cookie')) {
             $request->headers->set('Authorization', 'Bearer ' . $jwt);
-            $request->headers->set('Content-Type', 'application/json');
+//            $request->headers->set('Content-Type', 'application/json');
             $request->headers->set('Accept', 'application/json');
         }
 
