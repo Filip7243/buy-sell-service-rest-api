@@ -3,14 +3,13 @@
 namespace App\Services;
 
 use App\Http\Requests\V1\StoreProductRequest;
-use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
@@ -44,8 +43,11 @@ class ProductService
         $userId = $product->user_id;
         if ($user = User::findOrFail($userId)) {
             $promotionPrice = countDiscount($user);
-        }
+            $product->is_promoted = true;
+            $product->save();
 
+            return response()->json(['message' => 'Product created'], Response::HTTP_OK);
+        }
     }
 
     private function countDiscount(User $user)
