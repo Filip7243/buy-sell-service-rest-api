@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->unsignedDecimal('price', 10);
             $table->integer('quantity');
-            $table->string('product_condition')->default('FOR_SALE');
+            $table->string('condition')->default('FOR_SALE');
             $table->string('type')->default('NEW');
 
             $table->unsignedBigInteger('category_id')->nullable();

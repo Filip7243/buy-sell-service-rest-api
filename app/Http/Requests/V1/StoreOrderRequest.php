@@ -28,7 +28,8 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'price' => 'required|decimal:1,6',
-            'order_status' => 'required|in:PAID,NOT_PAID',
+            'quantity' => 'required|numeric',
+            'order_status' => 'required|in:PAID,NOT_PAID,CANCELED,RESERVED',
             'product_id' => 'required|exists:App\Models\Product,id',
             'user_id' => 'required|exists:App\Models\User,id'
         ];

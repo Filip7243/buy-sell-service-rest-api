@@ -17,6 +17,13 @@ class UserResource extends JsonResource
         return [
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
+            'phone_number' => $this->phone_number,
+            'country' => $this->country,
+            'city' => $this->city,
+            'postal_code' => $this->postal_code,
+            'street' => $this->street,
+            'home_number' => $this->flat_number,
+            'house_number' => $this->house_number,
             'email' => $this->email,
             'roles' => RoleResource::collection($this->roles)
         ];

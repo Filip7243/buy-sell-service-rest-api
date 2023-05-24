@@ -34,7 +34,7 @@ class UserController extends Controller
         $user->delete();
 
         return response([
-            'message' => 'User deleted'
+            'message' => ''
         ], Response::HTTP_NO_CONTENT);
     }
 }

@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 350000.20,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 1,
                 'user_id' => 1
@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 8000.00,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::USED,
+                'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 1,
                 'user_id' => 2
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 3500.00,
                 'quantity' => 5,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 2,
                 'user_id' => 2
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 200.50,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::USED,
+                'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 2,
                 'user_id' => 2
@@ -68,7 +68,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 1000.50,
                 'quantity' => 3,
-                'product_condition' => ProductCondition::USED,
+                'condition' => ProductCondition::USED,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 3,
                 'user_id' => 2
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 333.50,
                 'quantity' => 3,
-                'product_condition' => ProductCondition::USED,
+                'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 3,
                 'user_id' => 1
@@ -91,7 +91,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 250.50,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 4,
                 'user_id' => 1
@@ -102,7 +102,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 1000.50,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 4,
                 'user_id' => 2
@@ -114,7 +114,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 500.82,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 5,
                 'user_id' => 1
@@ -125,7 +125,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 49.99,
                 'quantity' => 10,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 5,
                 'user_id' => 1
@@ -137,7 +137,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 100.99,
                 'quantity' => 5,
-                'product_condition' => ProductCondition::USED,
+                'condition' => ProductCondition::USED,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 6,
                 'user_id' => 1
@@ -148,7 +148,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 50.99,
                 'quantity' => 5,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 6,
                 'user_id' => 2
@@ -160,7 +160,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 5000.99,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
                 'category_id' => 7,
                 'user_id' => 2
@@ -171,7 +171,7 @@ class ProductSeeder extends Seeder
                 'image' => 'placeholder',
                 'price' => 1500.00,
                 'quantity' => 1,
-                'product_condition' => ProductCondition::NEW,
+                'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
                 'category_id' => 7,
                 'user_id' => 1

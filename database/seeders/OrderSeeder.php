@@ -17,31 +17,36 @@ class OrderSeeder extends Seeder
         DB::table('orders')->insert([
             [
                 'price' => 2000.43,
+                'quantity' => 300,
                 'order_status' => OrderStatus::NOT_PAID,
                 'product_id' => 1,
                 'user_id' => 2
             ],
             [
                 'price' => 1000.18,
+                'quantity' => 300,
                 'order_status' => OrderStatus::NOT_PAID,
                 'product_id' => 5,
                 'user_id' => 2
             ],
             [
                 'price' => 658.20,
+                'quantity' => 300,
                 'order_status' => OrderStatus::PAID,
                 'product_id' => 7,
                 'user_id' => 1
             ],
             [
                 'price' => 83217.10,
-                'order_status' => OrderStatus::NOT_PAID,
+                'quantity' => 300,
+                'order_status' => OrderStatus::CANCELED,
                 'product_id' => 8,
                 'user_id' => 1
             ],
             [
                 'price' => 7321.29,
-                'order_status' => OrderStatus::PAID,
+                'quantity' => 300,
+                'order_status' => OrderStatus::RESERVED,
                 'product_id' => 11,
                 'user_id' => 2
             ]

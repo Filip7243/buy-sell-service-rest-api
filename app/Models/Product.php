@@ -19,7 +19,7 @@ class Product extends Model
         'image',
         'price',
         'quantity',
-        'product_condition',
+        'condition',
         'type',
         'category_id',
         'user_id'
@@ -40,8 +40,8 @@ class Product extends Model
         return $this->hasMany(User::class, 'id', 'user_id');
     }
 
-//    public function order()
-//    {
-//        return $this->belongsTo(Order::class);
-//    }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

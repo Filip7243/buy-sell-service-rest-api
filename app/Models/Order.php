@@ -14,6 +14,7 @@ class Order extends Model
 
     protected $fillable = [
         'price',
+        'quantity',
         'order_status',
         'product_id',
         'user_id'
@@ -25,7 +26,7 @@ class Order extends Model
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->hasMany(Product::class, 'id', 'product_id');
     }
 
     public function users()

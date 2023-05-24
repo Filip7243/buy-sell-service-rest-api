@@ -32,7 +32,7 @@ class StoreProductRequest extends FormRequest
             'image' => 'nullable|image|mimes:jpeg,png,jpg',
             'price' => 'required|decimal:1,6',
             'quantity' => 'required',
-            'product_condition' => 'required|in:NEW,USED',
+            'condition' => 'required|in:NEW,USED',
             'type' => 'required|in:FOR_SALE,TO_BUY',
             'category_id' => 'required|exists:App\Models\Category,id',
             'user_id' => 'required|exists:App\Models\User,id'

@@ -34,7 +34,7 @@ class UpdateProductRequest extends FormRequest
                 'image' => 'image|mimes:jpeg,png,jpg|size:1024',
                 'price' => 'required|decimal:1,6',
                 'quantity' => 'required',
-                'product_condition' => 'required|in:NEW,USED',
+                'condition' => 'required|in:NEW,USED',
                 'type' => 'required|in:FOR_SALE,TO_BUY',
                 'category_id' => 'required|exists:App\Models\Category,id',
             ];
@@ -46,7 +46,7 @@ class UpdateProductRequest extends FormRequest
             'image' => 'sometimes|image|mimes:jpeg,png,jpg|size:1024',
             'price' => 'sometimes|required|decimal:1,6',
             'quantity' => 'sometimes|required',
-            'product_condition' => 'sometimes|required|in:NEW,USED',
+            'condition' => 'sometimes|required|in:NEW,USED',
             'type' => 'sometimes|required|in:FOR_SALE,TO_BUY',
             'category_id' => 'sometimes|required|exists:App\Models\Category,id',
         ];

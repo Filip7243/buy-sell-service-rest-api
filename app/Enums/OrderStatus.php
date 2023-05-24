@@ -6,4 +6,6 @@ enum OrderStatus: string
 {
     case PAID = 'PAID';
     case NOT_PAID = 'NOT_PAID';
+    case RESERVED = 'RESERVED';
+    case CANCELED = 'CANCELED';
 }

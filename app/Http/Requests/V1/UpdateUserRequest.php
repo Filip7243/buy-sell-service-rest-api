@@ -32,13 +32,27 @@ class UpdateUserRequest extends FormRequest
             return [
                 'first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|email|unique:users,email'
+                'phone_number' => 'required|max:12',
+                'country' => 'required',
+                'postal_code' => 'required',
+                'city' => 'required',
+                'street' => 'required',
+                'flat_number' => 'required|numeric',
+                'house_number' => 'required|numeric',
+                'email' => 'required|email|unique:users,email,'.$this->user()->id
             ];
         } else {
             return [
                 'first_name' => 'sometimes|required',
                 'last_name' => 'sometimes|required',
-                'email' => 'sometimes|required|email|unique:users,email'
+                'phone_number' => 'required|max:12',
+                'country' => 'sometimes|required',
+                'postal_code' => 'required',
+                'city' => 'sometimes|required',
+                'street' => 'sometimes|required',
+                'flat_number' => 'sometimes|required|numeric',
+                'house_number' => 'sometimes|required|numeric',
+                'email' => 'sometimes|required|email|unique:users,email,'.$this->user()->id
             ];
         }
     }

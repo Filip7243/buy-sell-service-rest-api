@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedDecimal('price', 10);
+            $table->unsignedInteger('quantity');
             $table->string('order_status')->default('NOT_PAID');
 
-            $table->unsignedBigInteger('product_id')->unique();
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('product_id')

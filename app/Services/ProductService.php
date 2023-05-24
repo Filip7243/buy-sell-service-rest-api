@@ -22,7 +22,7 @@ class ProductService {
                 'image' => $imgName,
                 'price' => $request->price,
                 'quantity' => $request->quantity,
-                'product_condition' => $request->product_condition,
+                'condition' => $request->product_condition,
                 'type' => $request->type,
                 'category_id' => $request->category_id,
                 'user_id' => $request->user_id,

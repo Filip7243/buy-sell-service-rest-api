@@ -22,7 +22,7 @@ class ProductResource extends JsonResource
             'image' => $this->image,
             'price' => $this->price,
             'quantity' => $this->quantity,
-            'product_condition' => $this->product_condition,
+            'condition' => $this->product_condition,
             'type' => $this->type,
             'categories' => CategoryResource::collection($this->categories),
             'user' => UserResource::collection($this->users) // TODO: make resource for user!

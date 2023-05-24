@@ -22,6 +22,13 @@ class AuthController extends Controller
 
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
+        $user->phone_number = $request->input('phone_number');
+        $user->country = $request->input('country');
+        $user->postal_code = $request->input('postal_code');
+        $user->city = $request->input('city');
+        $user->street = $request->input('street');
+        $user->house_number = $request->input('house_number');
+        $user->flat_number = $request->input('flat_number');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 

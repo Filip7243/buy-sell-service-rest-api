@@ -24,6 +24,13 @@ class RegisterRequest extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
+            'phone_number' => 'required',
+            'country' => 'required',
+            'postal_code' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'flat_number' => 'nullable|numeric',
+            'house_number' => 'required|numeric',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
         ];
