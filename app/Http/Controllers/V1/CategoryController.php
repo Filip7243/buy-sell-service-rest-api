@@ -15,9 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
-        return new CategoryCollection(Category::paginate());
+        return new CategoryCollection(Category::filter()->paginate());
     }
 
     public function show(Category $category)
