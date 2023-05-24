@@ -24,6 +24,7 @@ class ProductResource extends JsonResource
             'quantity' => $this->quantity,
             'condition' => $this->condition,
             'type' => $this->type,
+            'is_promoted' => $this->is_promoted,
             'categories' => CategoryResource::collection($this->categories),
             'user' => UserResource::collection($this->users)
         ];

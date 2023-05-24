@@ -21,6 +21,7 @@ class Product extends Model
         'quantity',
         'condition',
         'type',
+        'is_promoted',
         'category_id',
         'user_id'
     ];

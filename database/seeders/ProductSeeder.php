@@ -24,6 +24,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 1,
                 'user_id' => 1
             ],
@@ -35,6 +36,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 1,
                 'user_id' => 2
             ],
@@ -47,6 +49,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 5,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 2,
                 'user_id' => 2
             ],
@@ -58,6 +61,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 2,
                 'user_id' => 2
             ],
@@ -70,6 +74,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 3,
                 'condition' => ProductCondition::USED,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 3,
                 'user_id' => 2
             ],
@@ -81,6 +86,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 3,
                 'condition' => ProductCondition::USED,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 3,
                 'user_id' => 1
             ],
@@ -93,6 +99,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 4,
                 'user_id' => 1
             ],
@@ -104,6 +111,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 4,
                 'user_id' => 2
             ],
@@ -116,6 +124,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 5,
                 'user_id' => 1
             ],
@@ -127,6 +136,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 10,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 5,
                 'user_id' => 1
             ],
@@ -139,6 +149,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 5,
                 'condition' => ProductCondition::USED,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 6,
                 'user_id' => 1
             ],
@@ -150,6 +161,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 5,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 6,
                 'user_id' => 2
             ],
@@ -162,6 +174,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::FOR_SALE,
+                'is_promoted' => false,
                 'category_id' => 7,
                 'user_id' => 2
             ],
@@ -173,6 +186,7 @@ class ProductSeeder extends Seeder
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,
                 'type' => ProductType::TO_BUY,
+                'is_promoted' => false,
                 'category_id' => 7,
                 'user_id' => 1
             ],

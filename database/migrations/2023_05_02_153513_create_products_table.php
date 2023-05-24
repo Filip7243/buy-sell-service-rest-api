@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('quantity');
             $table->string('condition')->default('FOR_SALE');
             $table->string('type')->default('NEW');
+            $table->boolean('is_promoted')->default(false);
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('user_id');
