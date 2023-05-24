@@ -9,7 +9,6 @@ use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
 use App\Services\ProductService;
-use App\Services\V1\CategoryQuery;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller

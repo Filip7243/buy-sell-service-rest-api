@@ -22,10 +22,10 @@ class ProductResource extends JsonResource
             'image' => $this->image,
             'price' => $this->price,
             'quantity' => $this->quantity,
-            'condition' => $this->product_condition,
+            'condition' => $this->condition,
             'type' => $this->type,
             'categories' => CategoryResource::collection($this->categories),
-            'user' => UserResource::collection($this->users) // TODO: make resource for user!
+            'user' => UserResource::collection($this->users)
         ];
     }
 }
