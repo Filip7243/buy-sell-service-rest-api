@@ -33,6 +33,8 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
+
+        return response(['message' => "Product has been updated!", 'Product' => new CategoryResource($category)]);
     }
 
     public function destroy(Category $category)
