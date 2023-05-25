@@ -7,6 +7,7 @@ use App\Http\Requests\V1\UpdateUserRequest;
 use App\Http\Resources\V1\UserCollection;
 use App\Http\Resources\V1\UserResource;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
-    public function order()
+    public function orders()
     {
         return $this->hasMany(Order::class);
     }

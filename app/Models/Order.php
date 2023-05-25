@@ -24,12 +24,12 @@ class Order extends Model
         'order_status' => OrderStatus::class
     ];
 
-    public function product()
+    public function products()
     {
         return $this->hasMany(Product::class, 'id', 'product_id');
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
