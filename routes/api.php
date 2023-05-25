@@ -5,6 +5,7 @@ use App\Http\Controllers\V1\CategoryController;
 use App\Http\Controllers\V1\OrderController;
 use App\Http\Controllers\V1\ProductController;
 use App\Http\Controllers\V1\UserController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,9 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [AuthController::class, 'user']);
     Route::get('logout', [AuthController::class, 'logout']);
+
+    Route::get('products/promoted', [ProductController::class, 'getPromotedProducts']);
+    Route::post('products/{product}/promote', [ProductController::class, 'promoteProduct']);
 
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('products', ProductController::class);
