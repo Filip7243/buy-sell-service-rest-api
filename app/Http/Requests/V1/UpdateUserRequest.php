@@ -45,9 +45,9 @@ class UpdateUserRequest extends FormRequest
             return [
                 'first_name' => 'sometimes|required',
                 'last_name' => 'sometimes|required',
-                'phone_number' => 'required|max:12',
+                'phone_number' => 'sometimes|required|max:12',
                 'country' => 'sometimes|required',
-                'postal_code' => 'required',
+                'postal_code' => 'sometimes|required',
                 'city' => 'sometimes|required',
                 'street' => 'sometimes|required',
                 'flat_number' => 'sometimes|required|numeric',
