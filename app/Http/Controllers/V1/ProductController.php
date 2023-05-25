@@ -9,6 +9,7 @@ use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
 use App\Models\Product;
 use App\Services\ProductService;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -40,5 +41,15 @@ class ProductController extends Controller
         $product->delete();
 
         return response('', Response::HTTP_NO_CONTENT);
+    }
+
+    public function getPromotedProducts(): ProductCollection
+    {
+        return (new ProductService())->getPromotedProducts();
+    }
+
+    public function promoteProduct(Product $product): JsonResponse
+    {
+        return (new ProductService())->promoteProduct($product);
     }
 }
