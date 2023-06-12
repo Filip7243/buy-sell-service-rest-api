@@ -50,7 +50,7 @@ class AuthController extends Controller
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response([
-                'message' => 'Invalid Credentials'
+                'error' => 'Invalid Credentials'
             ], Response::HTTP_UNAUTHORIZED);  // 401
         }
 
@@ -83,7 +83,8 @@ class AuthController extends Controller
         $cookie = cookie('token-cookie', $token, 60 * 24); // valid for 1 day
 
         return response([
-            'message' => 'Successfully logged in!'
+            'user' => $user,
+            'token' => $token
         ])->withCookie($cookie);
     }
 
