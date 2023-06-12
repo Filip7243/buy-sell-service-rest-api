@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
 use App\Enums\OrderStatus;
-use App\Enums\ProductCondition;
-use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
     use HasFactory;
+    use Filterable;
 
     protected $fillable = [
         'price',
@@ -24,12 +25,12 @@ class Order extends Model
         'order_status' => OrderStatus::class
     ];
 
-    public function products()
+    public function product() : BelongsTo
     {
-        return $this->hasMany(Product::class, 'id', 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
-    public function user()
+    public function user() : BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

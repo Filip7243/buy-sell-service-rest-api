@@ -25,8 +25,8 @@ class ProductResource extends JsonResource
             'condition' => $this->condition,
             'type' => $this->type,
             'is_promoted' => $this->is_promoted,
-            'categories' => CategoryResource::collection($this->categories),
-            'user' => UserResource::collection($this->users)
+            'category' => $this->category,
+            'user' => $this->user // TODO: n+1
         ];
     }
 }

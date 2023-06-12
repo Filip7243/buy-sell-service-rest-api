@@ -27,7 +27,7 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price' => 'required|decimal:1,6',
+            'price' => 'required',
             'quantity' => 'required|numeric',
             'order_status' => 'required|in:PAID,NOT_PAID,CANCELED,RESERVED',
             'product_id' => 'required|exists:App\Models\Product,id',

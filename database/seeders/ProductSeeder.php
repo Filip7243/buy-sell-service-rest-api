@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'BMW M3 Competition',
                 'description' => 'BMW M3 Competition 300MPH 2018 NEW FOR SALE!!!',
-                'image' => 'placeholder',
+                'image' => '/storage/default.jpg',
                 'price' => 350000.20,
                 'quantity' => 1,
                 'condition' => ProductCondition::NEW,

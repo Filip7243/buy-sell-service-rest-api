@@ -48,9 +48,9 @@ class User extends Authenticatable
             ->belongsToMany(Role::class, 'users_roles');
     }
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class, 'id', 'product_id');
     }
 
     public function orders()

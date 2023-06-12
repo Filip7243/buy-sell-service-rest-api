@@ -3,16 +3,17 @@
 namespace App\Services;
 
 use App\Http\Requests\V1\StoreProductRequest;
+use App\Http\Requests\V1\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use PHPUnit\Exception;
 use Symfony\Component\HttpFoundation\Response;
+
 
 class ProductService
 {
@@ -20,12 +21,13 @@ class ProductService
     public function createProduct(StoreProductRequest $request): JsonResponse
     {
         try {
-            $imgName = Str::random(32) . '.' . $request->image->getClientOriginalExtension();
+//            $imgName = Str::random(32) . '.' . $request->image->getClientOriginalExtension();
+//            $url = Storage::url($imgName);
 
-            Product::create([
+            $product = Product::create([
                 'name' => $request->name,
                 'description' => $request->description,
-                'image' => $imgName,
+                'image' => '/storage/default.jpg',
                 'price' => $request->price,
                 'quantity' => $request->quantity,
                 'condition' => $request->condition,
@@ -33,17 +35,38 @@ class ProductService
                 'category_id' => $request->category_id,
                 'user_id' => $request->user_id,
             ]);
-            Storage::disk('public')->put($imgName, file_get_contents($request->image));
 
-            return response()->json(['message' => 'Successfully added new product!'], Response::HTTP_CREATED);
+//            $file = file_get_contents($request->image);
+//            Storage::disk('public')->put($imgName, $file);
+
+            return response()->json(['message' => 'Successfully added new product!', 'id' => $product->id], Response::HTTP_CREATED);
         } catch (Exception $e) {
             return response()->json(['message' => 'Something went wrong!'], Response::HTTP_CONFLICT);
         }
     }
 
+    public function uploadImage(Product $product, UpdateProductRequest $request)
+    {
+//        echo $request->file('image')->getClientOriginalExtension();
+//        $imgName = Str::random(32) . '.' . $request->image->getClientOriginalExtension();
+//        Storage::url($imgName);
+//        $product->image = $request->image;
+//        $file = file_get_contents($request->image);
+//        Storage::disk('public')->put($imgName, $file);
+//        $product->save();
+//
+//        return response()->json(['message' => 'Image uploaded!'], Response::HTTP_OK);
+        // TODO: zrobic oddzielny przycisk na uplaod image dla prouktu i chuj,
+        // TODO: do tego zrobic tabele dla uzytkownika z produktami ktore ktos od niego kupil
+        // TODO: przy kazdym takim rekordzie przycisk wyslij zmaoiwnie, ktory wysla maila do usera
+        // TODO: a później jeszcze twrzy pdfa jakiegos czy cos(do wysylki papierek), który też jest wysyłany na maila usera, który wysyla
+        // TODO: admin panel z crudem,
+        // TODO: docs i wysyłam i się bronie na początkiu następnego tygodnia...
+    }
+
     public function promoteProduct(Product $product): JsonResponse
     {
-        $userId = $product->users->first()->id;
+        $userId = $product->user;
         if ($user = User::findOrFail($userId)) {
             $promotionPrice = $this->countDiscount($user);
             $product->is_promoted = true;
@@ -65,9 +88,9 @@ class ProductService
         $userAccountAge = now()->diffInYears($user->created_at);
         // at least one year on portal to get discount
         if ($userAccountAge >= 1) {
-            $discount = 0.95;
+            $discount = 0.05; // 5%
             for ($i = 1; $i <= $userAccountAge; $i++) {
-                $promotionPrice *= $discount;
+                $promotionPrice *= (1 - $discount);
             }
         }
 
@@ -76,7 +99,7 @@ class ProductService
 
     public function getPromotedProducts(): ProductCollection
     {
-        $promotedProducts = Product::with('categories')->where('is_promoted', true)->get();
+        $promotedProducts = Product::with('category')->where('is_promoted', true)->paginate();
 
         return new ProductCollection($promotedProducts);
     }

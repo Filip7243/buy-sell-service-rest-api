@@ -7,6 +7,8 @@ use App\Enums\ProductCondition;
 use App\Enums\ProductType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -31,18 +33,20 @@ class Product extends Model
         'product_condition' => ProductCondition::class
     ];
 
-    public function categories()
+    public $with = ['user', 'category'];
+
+    public function category() : BelongsTo
     {
-        return $this->hasMany(Category::class, 'id', 'category_id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function users()
+    public function user() : BelongsTo
     {
-        return $this->hasMany(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function order()
+    public function orders() : HasMany
     {
-        return $this->belongsTo(Order::class, 'order_id', 'id');
+        return $this->hasMany(Order::class, 'id', 'order_id');
     }
 }

@@ -29,6 +29,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('products/promoted', [ProductController::class, 'getPromotedProducts']);
     Route::post('products/{product}/promote', [ProductController::class, 'promoteProduct']);
 
+    Route::patch('orders/{order}/cancel', [OrderController::class, 'cancelOrder']);
+    Route::patch('orders/{order}/pay', [OrderController::class, 'payForOrder']);
+    Route::get('orders/toSend/{user}', [OrderController::class, 'getAllOrdersToSend']);
+
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('products', ProductController::class);
     Route::apiResource('orders', OrderController::class);

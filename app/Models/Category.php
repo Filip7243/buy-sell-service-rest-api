@@ -12,12 +12,11 @@ class Category extends Model
     use Filterable;
 
     protected $fillable = [
-        'name',
-        'product_id'
+        'name'
     ];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->hasMany(Product::class, 'id', 'product_id');
     }
 }
