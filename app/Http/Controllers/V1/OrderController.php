@@ -8,6 +8,8 @@ use App\Http\Requests\V1\UpdateOrderRequest;
 use App\Http\Resources\V1\OrderCollection;
 use App\Http\Resources\V1\OrderResource;
 use App\Models\Order;
+use App\Models\User;
+use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,7 +17,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return new OrderCollection(Order::paginate());
+        return new OrderCollection(Order::filter()->paginate());
     }
 
     public function show(Order $order)
@@ -25,7 +27,7 @@ class OrderController extends Controller
 
     public function store(StoreOrderRequest $request)
     {
-        return new OrderResource(Order::create($request->all()));
+        return (new OrderService())->makeOrder($request);
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
@@ -38,8 +40,27 @@ class OrderController extends Controller
         $order->delete();
 
         return response([
-            'message' => 'Order deleted'
+            'message' => ''
         ], Response::HTTP_NO_CONTENT);
+    }
+
+    public function cancelOrder(Order $order)
+    {
+        $cancelledOrder = (new OrderService())->cancelOrder($order);
+
+        return response(['message' => 'Successfully canceled order!'], Response::HTTP_OK);
+    }
+
+    public function payForOrder(Order $order)
+    {
+        $cancelledOrder = (new OrderService())->payForOrder($order);
+
+        return response(['message' => 'Thanks for paying!'], Response::HTTP_OK);
+    }
+
+    public function getAllOrdersToSend(User $user)
+    {
+        return (new OrderService())->getAllOrdersToSend($user);
     }
 
 }
