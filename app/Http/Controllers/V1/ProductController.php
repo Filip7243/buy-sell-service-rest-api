@@ -7,8 +7,10 @@ use App\Http\Requests\V1\StoreProductRequest;
 use App\Http\Requests\V1\UpdateProductRequest;
 use App\Http\Resources\V1\ProductCollection;
 use App\Http\Resources\V1\ProductResource;
+use App\Models\Category;
 use App\Models\Product;
 use App\Services\ProductService;
+use http\Env\Request;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,9 +33,12 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, Product $product)
     {
+        echo $request->img;
         $product->update($request->all());
 
-        return response(['message' => "Product has been updated!", 'Product' => new ProductResource($product)]);
+        return response(
+            ['message' => "Product has been updated!", 'img' => $request->image],
+            Response::HTTP_OK);
     }
 
     public function destroy(Product $product)
@@ -51,5 +56,10 @@ class ProductController extends Controller
     public function promoteProduct(Product $product): JsonResponse
     {
         return (new ProductService())->promoteProduct($product);
+    }
+
+    public function uploadImage(Product $product, UpdateProductRequest $request)
+    {
+        return (new ProductService())->uploadImage($product, $request);
     }
 }
