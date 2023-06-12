@@ -8,7 +8,6 @@ use App\Http\Resources\V1\UserCollection;
 use App\Http\Resources\V1\UserResource;
 use App\Models\User;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -27,7 +26,9 @@ class UserController extends Controller
     {
         $user->update($request->all());
 
-        return response(['User has been updated successfully!' => new UserResource($user)]);
+        return response([
+            'message' => 'User has been successfully updated!'
+        ], Response::HTTP_OK);
     }
 
     public function destroy(User $user)
@@ -37,5 +38,10 @@ class UserController extends Controller
         return response([
             'message' => ''
         ], Response::HTTP_NO_CONTENT);
+    }
+
+    public function getUserOrders(User $user)
+    {
+        return (new UserService())->findUserOrders($user);
     }
 }
